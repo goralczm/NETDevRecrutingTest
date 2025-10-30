@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "NETDevRecrutingTest": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
