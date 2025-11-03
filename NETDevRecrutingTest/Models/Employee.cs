@@ -1,6 +1,6 @@
-﻿namespace NETDevRecrutingTest.Models
+﻿namespace Exercise1.Models
 {
-    internal class Employee
+    public class Employee
     {
         public int Id { get; set; }
         public String Name { get; set; }

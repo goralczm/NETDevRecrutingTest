@@ -1,6 +1,6 @@
-﻿namespace NETDevRecrutingTest.Models
+﻿namespace Exercise1.Models
 {
-    internal class EmployeeStructure
+    public class EmployeeStructure
     {
         public int EmployeeId { get; set; }
         public int SuperiorId { get; set; }

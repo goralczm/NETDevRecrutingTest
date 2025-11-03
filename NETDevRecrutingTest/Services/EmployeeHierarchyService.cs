@@ -1,10 +1,17 @@
-﻿using NETDevRecrutingTest.Models;
+﻿using Exercise1.Models;
 
-namespace NETDevRecrutingTest.Services
+namespace Exercise1.Services
 {
-    internal class EmployeeHierarchyService
+    public class EmployeeHierarchyService
     {
         private List<EmployeeStructure> _employeesHierarchyCache = new();
+
+        public EmployeeHierarchyService() { }
+
+        public EmployeeHierarchyService(List<Employee> employees)
+        {
+            _employeesHierarchyCache = FillEmployeesStructure(employees);
+        }
 
         public List<EmployeeStructure> FillEmployeesStructure(List<Employee> employees)
         {
@@ -32,7 +39,6 @@ namespace NETDevRecrutingTest.Services
                 }
             }
 
-            _employeesHierarchyCache = structures;
             return structures;
         }
 
