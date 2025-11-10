@@ -64,7 +64,8 @@ GROUP BY
 ## c) Zwraca listę zespołów w których pracownicy nie złożyli jeszcze żadnego dnia urlopowego w 2019 roku.
 ```sql
 SELECT 
-    *
+    t.id,
+    t.name
 FROM 
     Team AS t
 WHERE 
