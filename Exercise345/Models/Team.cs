@@ -1,4 +1,4 @@
-﻿namespace Exercise3.Models
+﻿namespace Exercise345.Models
 {
     public class Team
     {

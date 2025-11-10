@@ -1,7 +1,7 @@
-﻿using Exercise3.Models;
-using Exercise3.Services;
+﻿using Exercise345.Models;
+using Exercise345.Services;
 
-namespace Exercise3.Tests
+namespace Exercise345.Tests
 {
     public class VacationServiceTests
     {
@@ -65,6 +65,54 @@ namespace Exercise3.Tests
             var vacationService = new VacationService();
 
             Assert.False(vacationService.IfEmployeeCanRequestVacation(employee, vacations, vacationPackage));
+        }
+
+        [Fact]
+        public void CountFreeDaysForEmployee_WithVacationEndingNextYear_ShouldCountOnlyForCurrentYear()
+        {
+            var employee = CreateSimpleEmployee();
+            var vacations = new List<Vacation>
+            {
+                new Vacation
+                {
+                    Id = 0,
+                    DateSince = new DateTime(DateTime.Now.Year, 12, 30),
+                    DateUntil = new DateTime(DateTime.Now.Year + 1, 1, 2),
+                    EmployeeId = employee.Id,
+                    IsPartialVacation = 0,
+                    NumberOfHours = 0,
+                }
+            };
+
+            var vacationPackage = CreateSimpleVacationPackage(grantedDays: 5);
+
+            var vacationService = new VacationService();
+
+            Assert.Equal(3, vacationService.CountFreeDaysForEmployee(employee, vacations, vacationPackage));
+        }
+
+        [Fact]
+        public void CountFreeDaysForEmployee_WithVacationStartingLastYear_ShouldCountOnlyForCurrentYear()
+        {
+            var employee = CreateSimpleEmployee();
+            var vacations = new List<Vacation>
+            {
+                new Vacation
+                {
+                    Id = 0,
+                    DateSince = new DateTime(DateTime.Now.Year - 1, 12, 30),
+                    DateUntil = new DateTime(DateTime.Now.Year, 1, 2),
+                    EmployeeId = employee.Id,
+                    IsPartialVacation = 0,
+                    NumberOfHours = 0,
+                }
+            };
+
+            var vacationPackage = CreateSimpleVacationPackage(grantedDays: 5);
+
+            var vacationService = new VacationService();
+
+            Assert.Equal(3, vacationService.CountFreeDaysForEmployee(employee, vacations, vacationPackage));
         }
     }
 }

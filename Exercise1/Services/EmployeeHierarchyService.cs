@@ -15,6 +15,9 @@ namespace Exercise1.Services
 
         public List<EmployeeStructure> FillEmployeesStructure(List<Employee> employees)
         {
+            if (employees == null)
+                throw new ArgumentNullException(nameof(employees));
+
             List<EmployeeStructure> structures = new();
 
             foreach (Employee employee in employees)
