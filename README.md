@@ -12,7 +12,8 @@ Dodatkowo stworzyłem dwa proste [testy jednostkowe](https://github.com/goralczm
 ## a) Zwraca listę wszystkich pracowników z zespołu o nazwie “.NET”, którzy mają co najmniej jeden wniosek urlopowy w 2019 roku.
 ```sql
 SELECT DISTINCT
-    e.*
+    e.id,
+    e.name
 FROM
     Employee as e
     JOIN Team as t
@@ -31,7 +32,6 @@ WHERE
 SELECT
     e.id,
     e.name,
-    vp.grantedDays,
     SUM(
         IF(v.isPartialVacation = 1,
            v.numberOfHours / 8,
